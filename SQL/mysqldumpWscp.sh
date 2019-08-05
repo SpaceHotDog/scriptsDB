@@ -5,13 +5,9 @@
 
 DBNAME='{NOMBRE DE LA DB}'
 SVD='{IP SERVER DESTINO}'
+USER='{USUARIO}'
 
-
-USER='$(echo $USER)'
-
-mysqldump -u$USER -p --opt --routines --triggers --events --single-transaction --no-tablespaces --master-data=2 --databases $DBNAME
-
-gzip > $DBNAME.sql.gz
+mysqldump -u$USER -p --opt --routines --triggers --events --single-transaction --no-tablespaces ${DBNAME} | gzip > ${DBNAME}.sql.gz
 
 du -hs $DBNAME.sql.gz
 
