@@ -1,9 +1,6 @@
 /*
-Problem: List all orders with
-product names, quantities, and prices.
-
 This query performs two JOIN operations with 3 tables.
-The O, I, and P are table aliases. Date is a column alias.
+The U, N, and NU are table aliases.
 */
 
 SELECT U.nombre, N.numero
