@@ -8,8 +8,10 @@ SELECT index_schema,
             END AS is_unique,
         table_name
 FROM information_schema.statistics
-WHERE table_schema NOT IN ('information_schema', 'mysql',
-                           'performance_schema', 'sys')
+/*
+REMEMBER TO SPECIFY DB NAME: WHERE table_schema = 'db_name'
+*/
+WHERE table_schema = 'mc_demo'
 GROUP BY index_schema,
          index_name,
          index_type,
