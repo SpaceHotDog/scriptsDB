@@ -1,0 +1,16 @@
+-----------------------
+USEFUL CLUSTER VARIABLES
+------------------------
+
+command: SHOW STATUS LIKE 'wsrep_%';
+
+results:
+| wsrep_cluster_conf_id        | 0 (+-= in * nodes)
+| wsrep_cluster_size           | 2
+| wsrep_cluster_state_uuid     | c0605516 (= in * nodes)
+| wsrep_cluster_status         | Primary
+| wsrep_cluster_weight         | 2
+| wsrep_connected              | ON
+| wsrep_local_state_comment    | Synced (Donor - Joining)
+| wsrep_ready                  | ON (Accep queries or not)
+
