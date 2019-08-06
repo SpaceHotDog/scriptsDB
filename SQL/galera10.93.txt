@@ -3,6 +3,7 @@ USEFUL CLUSTER VARIABLES
 ------------------------
 
 Server: 192.168.10.93
+Descipcion: Galera Cluster QA
 Command: SHOW STATUS LIKE 'wsrep_%';
 
 Results:
@@ -17,6 +18,7 @@ Results:
 ----------------------------------------------------------------------------------
 
 Server: 192.168.33.22
+Descipcion: Galera Cluster Multichannel PROD
 Command: mysql --defaults-extra-file=/dbdata/scripts/.nsolignac.cnf -u nsolignac -e "SHOW STATUS LIKE 'wsrep_%'";
 Command2: SHOW STATUS LIKE 'wsrep_%';
 Results (FULL):
