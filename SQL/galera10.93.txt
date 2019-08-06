@@ -1,6 +1,7 @@
 -----------------------
 USEFUL CLUSTER VARIABLES
 ------------------------
+SOURCE: https://galeracluster.com/library/documentation/monitoring-cluster.html
 
 Server: 192.168.10.93
 Descipcion: Galera Cluster QA
