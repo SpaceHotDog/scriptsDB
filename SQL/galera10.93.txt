@@ -2,9 +2,10 @@
 USEFUL CLUSTER VARIABLES
 ------------------------
 
-command: SHOW STATUS LIKE 'wsrep_%';
+Server: 192.168.10.93
+Command: SHOW STATUS LIKE 'wsrep_%';
 
-results:
+Results:
 | wsrep_cluster_conf_id        | 0 (+-= in * nodes)
 | wsrep_cluster_size           | 2
 | wsrep_cluster_state_uuid     | c0605516 (= in * nodes)
@@ -13,4 +14,71 @@ results:
 | wsrep_connected              | ON
 | wsrep_local_state_comment    | Synced (Donor - Joining)
 | wsrep_ready                  | ON (Accep queries or not)
+----------------------------------------------------------------------------------
 
+Server: 192.168.33.22
+Command: mysql --defaults-extra-file=/dbdata/scripts/.nsolignac.cnf -u nsolignac -e "SHOW STATUS LIKE 'wsrep_%'";
+Command2: SHOW STATUS LIKE 'wsrep_%';
+Results (FULL):
+| wsrep_apply_oooe             | 0.007984                                        |
+| wsrep_apply_oool             | 0.000331                                        |
+| wsrep_apply_window           | 1.018052                                        |
+| wsrep_causal_reads           | 0                                               |
+| wsrep_cert_deps_distance     | 29.195223                                       |
+| wsrep_cert_index_size        | 110                                             |
+| wsrep_cert_interval          | 0.009876                                        |
+| wsrep_cluster_conf_id        | 6                                               |
+| wsrep_cluster_size           | 2                                               |
+| wsrep_cluster_state_uuid     | 7919ff9f-e67d-11e8-9eb1-cb8c0948b86b            |
+| wsrep_cluster_status         | Primary                                         |
+| wsrep_cluster_weight         | 2                                               |
+| wsrep_commit_oooe            | 0.000000                                        |
+| wsrep_commit_oool            | 0.000058                                        |
+| wsrep_commit_window          | 1.008040                                        |
+| wsrep_connected              | ON                                              |
+| wsrep_desync_count           | 0                                               |
+| wsrep_evs_delayed            |                                                 |
+| wsrep_evs_evict_list         |                                                 |
+| wsrep_evs_repl_latency       | 0.00025016/0.000270635/0.00029526/1.61873e-05/4 |
+| wsrep_evs_state              | OPERATIONAL                                     |
+| wsrep_flow_control_paused    | 0.000003                                        |
+| wsrep_flow_control_paused_ns | 59257971905                                     |
+| wsrep_flow_control_recv      | 197                                             |
+| wsrep_flow_control_sent      | 197                                             |
+| wsrep_gcomm_uuid             | d02ee622-e680-11e8-93d2-efff34f3431c            |
+| wsrep_incoming_addresses     | 10.10.10.102:3306,10.10.10.156:3306             |
+| wsrep_last_committed         | 20794452                                        |
+| wsrep_local_bf_aborts        | 1450                                            |
+| wsrep_local_cached_downto    | 18583576                                        |
+| wsrep_local_cert_failures    | 703                                             |
+| wsrep_local_commits          | 11445109                                        |
+| wsrep_local_index            | 0                                               |
+| wsrep_local_recv_queue       | 0                                               |
+| wsrep_local_recv_queue_avg   | 0.005349                                        |
+| wsrep_local_recv_queue_max   | 108                                             |
+| wsrep_local_recv_queue_min   | 0                                               |
+| wsrep_local_replays          | 1                                               |
+| wsrep_local_send_queue       | 0                                               |
+| wsrep_local_send_queue_avg   | 0.000645                                        |
+| wsrep_local_send_queue_max   | 3                                               |
+| wsrep_local_send_queue_min   | 0                                               |
+| wsrep_local_state            | 4                                               |
+| wsrep_local_state_comment    | Synced                                          |
+| wsrep_local_state_uuid       | 7919ff9f-e67d-11e8-9eb1-cb8c0948b86b            |
+| wsrep_open_connections       | 0                                               |
+| wsrep_open_transactions      | 0                                               |
+| wsrep_protocol_version       | 9                                               |
+| wsrep_provider_name          | Galera                                          |
+| wsrep_provider_vendor        | Codership Oy <info@codership.com>               |
+| wsrep_provider_version       | 25.3.24(r3825)                                  |
+| wsrep_ready                  | ON                                              |
+| wsrep_received               | 9666916                                         |
+| wsrep_received_bytes         | 4638829627                                      |
+| wsrep_repl_data_bytes        | 3488044717                                      |
+| wsrep_repl_keys              | 50446374                                        |
+| wsrep_repl_keys_bytes        | 678284488                                       |
+| wsrep_repl_other_bytes       | 0                                               |
+| wsrep_replicated             | 11446394                                        |
+| wsrep_replicated_bytes       | 4939834760                                      |
+| wsrep_thread_count           | 9                                               |
+----------------------------------------------------------------------------------
