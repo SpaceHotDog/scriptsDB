@@ -38,7 +38,7 @@ Results (FULL):
 | wsrep_commit_oooe            | 0.000000                                        |
 | wsrep_commit_oool            | 0.000058                                        |
 | wsrep_commit_window          | 1.008040                                        |
-| wsrep_connected              | ON                                              |
+| wsrep_connected              | ON                                              |!
 | wsrep_desync_count           | 0                                               |
 | wsrep_evs_delayed            |                                                 |
 | wsrep_evs_evict_list         |                                                 |
