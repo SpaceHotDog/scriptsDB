@@ -1,3 +1,5 @@
+# SOURCES: http://www.youdidwhatwithtsql.com/simple-mariadb-deployment-ansible/2311/
+# https://docs.ansible.com/ansible/latest/modules/mysql_replication_module.html#mysql-replication-module
 # The basic steps the playbook will attempt are:
 
 # Install a few libraries
