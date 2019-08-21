@@ -43,3 +43,16 @@ CREATE EVENT mcqa.TruncateAgencyContact
     STARTS CURRENT_TIMESTAMP + INTERVAL 2 HOUR
     DO
         TRUNCATE TABLE agency_contact;
+
+
+/*
+EJEMPLO SONDEOS:
+----------------
+
+CREATE EVENT mctruncateagencycontact
+    ON SCHEDULE EVERY DAY
+        STARTS (TIMESTAMP(CURRENT_DATE) + INTERVAL 1 DAY + INTERVAL 12 HOUR)
+    COMMENT 'JOB para el Truncado de la tabla "Agency Contact" de la DB MC - ID TT Mantis: 0074130'
+    DO
+        CALL MC.TruncateAgencyContact();
+*/

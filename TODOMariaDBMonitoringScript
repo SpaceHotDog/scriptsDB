@@ -1,0 +1,9 @@
+SOURCE: https://mariadb.com/kb/en/library/setting-up-replication/#start-the-slave
+
+SHOW BINLOG EVENTS;
+-------------------
+
+SOURCES:
+https://mariadb.com/kb/en/library/gtid/
+From MariaDB 10.0.2, global transaction ID is enabled automatically. Each event group logged to the binlog receives a GTID event, as can be seen with mysqlbinlog or SHOW BINLOG EVENTS
+https://mariadb.com/kb/en/library/show-binlog-events/
