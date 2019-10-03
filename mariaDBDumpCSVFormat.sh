@@ -28,7 +28,7 @@ echo "Comenzamos el proceso" >> $LOGFILE
 for TBL in $(mysql -h$DBHOST -u$USER -p$PWD $DB -sN -e "SHOW TABLES;"); do
 
     export QUERY=$(mysql -h$DBHOST -u$USER -p$PWD $DB -sN -e "SELECT COUNT(id) FROM $TBL;")
-    export COUNTER=$((QUERY / 1000000))
+    export COUNTER=$((QUERY / 1000000 + 1))
 
     echo "COUNTER: $COUNTER" >> $LOGFILE
     echo "Comenzamos el dump de la tabla: '$TBL'" >> $LOGFILE
