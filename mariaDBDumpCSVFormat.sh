@@ -27,18 +27,18 @@ echo "Comenzamos el proceso" >> $LOGFILE
 
 for TBL in $(mysql -h$DBHOST -u$USER -p$PWD $DB -sN -e "SHOW TABLES;"); do
 
-    export QUERY=$(mysql -h$DBHOST -u$USER -p$PWD $DB -sN -e "SELECT COUNT(id) FROM $TBL;")
-    export COUNTER=$((QUERY / 1000000 + 1))
+    export ROWS=$(mysql -h$DBHOST -u$USER -p$PWD $DB -sN -e "SELECT COUNT(id) FROM $TBL;")
+    export COUNTER=$((ROWS / 1000000 + 1))
 
     echo "COUNTER: $COUNTER" >> $LOGFILE
     echo "Comenzamos el dump de la tabla: '$TBL'" >> $LOGFILE
 
     while [ $COUNTER -ne 0 ]; do
-        mysql -B -h$DBHOST -u$USER -p$PWD -e "SELECT * FROM $TBL LIMIT 1000000 OFFSET $OFFSET;" $DB | sed "s/\"/\"\"/g;s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" | gzip > $DB'-'$DATE'-'$OFFSET.sql.gz
+        mysql -B -h$DBHOST -u$USER -p$PWD -e "SELECT * FROM $TBL LIMIT 1000000 OFFSET $OFFSET;" $DB | sed "s/\"/\"\"/g;s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" | gzip > $DB'-'$DATE'-'$OFFSET.csv.gz
 
+        echo "Fin del Dump de la tabla: '$TBL' - Iteracion Num: $COUNTER - OFFSET: $OFFSET" >> $LOGFILE
         let COUNTER-=1
         let OFFSET+=1000000
-        echo "Dump de la tabla: '$TBL' - Iteracion Num: $COUNTER" >> $LOGFILE
     done
 
     let N+=1
