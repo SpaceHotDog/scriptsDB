@@ -43,11 +43,13 @@ for TBL in $(mysql -h$DBHOST -u$USER -p$PWD $DB -sN -e "SHOW TABLES;"); do
         then
             let OFFSETTMP=$OFFSET
             OFFSET=$OFFSETTMP
+
+            mysql -B -h$DBHOST -u$USER -p$PWD -e "SELECT nrodoc, linea, localidad_id, provincia_id FROM $TBL LIMIT 1000000 OFFSET $OFFSET;" $DB | sed "s/\"/\"\"/g;s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" | gzip > $DB'-'$DATE'-'$TBL'-'$OFFSET.csv.gz
         else
             let OFFSET=0
-        fi
 
-        mysql -B -h$DBHOST -u$USER -p$PWD -e "SELECT * FROM $TBL LIMIT 1000000 OFFSET $OFFSET;" $DB | sed "s/\"/\"\"/g;s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" | gzip > $DB'-'$DATE'-'$TBL'-'$OFFSET.csv.gz
+            mysql -B -h$DBHOST -u$USER -p$PWD -e "SELECT * FROM $TBL LIMIT 1000000 OFFSET $OFFSET;" $DB | sed "s/\"/\"\"/g;s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" | gzip > $DB'-'$DATE'-'$TBL'-'$OFFSET.csv.gz
+        fi
 
         echo "Fin del Dump de la tabla: '$TBL' - Clicos restantes: $COUNTER - OFFSET: $OFFSET" >> $LOGFILE
 
@@ -57,7 +59,6 @@ for TBL in $(mysql -h$DBHOST -u$USER -p$PWD $DB -sN -e "SHOW TABLES;"); do
 
     let N+=1
     echo "Fin del dump de la tabla: '$TBL' - Vuelta $N" >> $LOGFILE
-
 done
 
 # Comprimimos los archivos
