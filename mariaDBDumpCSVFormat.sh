@@ -47,7 +47,7 @@ for TBL in $(mysql -h$DBHOST -u$USER -p$PWD $DB -sN -e "SHOW TABLES;"); do
             mysql -B -h$DBHOST -u$USER -p$PWD -e "SELECT * FROM $TBL LIMIT 1000000 OFFSET $OFFSET;" $DB | sed "s/\"/\"\"/g;s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" | gzip > $DB'-'$DATE'-'$TBL'-'$OFFSET.csv.gz
         fi
 
-        echo "Fin del Dump de la tabla: '$TBL' - Clicos restantes: $COUNTER - OFFSET: $OFFSET" >> $LOGFILE
+        echo "Fin del Dump de la tabla: '$TBL' - Ciclos restantes: $COUNTER - OFFSET: $OFFSET" >> $LOGFILE
 
         let COUNTER-=1
         let OFFSET+=1000000
