@@ -25,7 +25,6 @@ export USER="celulares_admin"
 export PWD="celuser.3135"
 export N=0
 export OFFSET=0
-export OFFSETTMP=0
 
 # Comenzamos el DUMP
 echo "Comenzamos el proceso" >> $LOGFILE
@@ -41,9 +40,6 @@ for TBL in $(mysql -h$DBHOST -u$USER -p$PWD $DB -sN -e "SHOW TABLES;"); do
     while [ $COUNTER -ne 0 ]; do
         if [ $TBL = 'celulares' ]
         then
-            let OFFSETTMP=$OFFSET
-            OFFSET=$OFFSETTMP
-
             mysql -B -h$DBHOST -u$USER -p$PWD -e "SELECT nrodoc, linea, localidad_id, provincia_id FROM $TBL LIMIT 1000000 OFFSET $OFFSET;" $DB | sed "s/\"/\"\"/g;s/'/\'/;s/\t/\",\"/g;s/^/\"/;s/$/\"/;s/\n//g" | gzip > $DB'-'$DATE'-'$TBL'-'$OFFSET.csv.gz
         else
             let OFFSET=0
