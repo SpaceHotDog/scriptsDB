@@ -4,7 +4,12 @@
 # https://mariadb.com/kb/en/library/mariabackup-overview/
 # https://www.symmcom.com/docs/how-tos/databases/how-to-recover-mariadb-galera-cluster-after-partial-or-full-crash
 
+## TODO
+#1 -
+#2 -
+
 echo "### INSTALO DEPENDENCIAS ###"
+curl -sS https://downloads.mariadb.com/MariaDB/mariadb_repo_setup | sudo bash
 sudo apt-get install mariadb-backup-10.1
 echo "                            "
 
