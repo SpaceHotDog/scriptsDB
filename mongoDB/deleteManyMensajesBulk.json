@@ -3,3 +3,11 @@ try {
 } catch (e) {
    print (e);
 }
+
+
+try {
+   db.MensajesBulk.deleteMany( { "fechaIngreso" : {$lt : ISODate("2019-12-02T00:00:00.000Z")},
+                                         "origen" : {$in : [ "1234", "4321", "5678" ]} });
+} catch (e) {
+   print (e);
+}

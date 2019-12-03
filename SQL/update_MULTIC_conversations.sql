@@ -15,11 +15,11 @@ UPDATE multic.conversation
 SET last_activity = NOW(), status = 'closed'
 WHERE company_id = '134' AND messenger_id = '265';
 
+
 ---
 
 company_id = '134'
-messenger_id = '265''
-messenger_id = '197''
+messenger_id = '265'
 messenger_id = '197'
 
 UPDATE multic.conversation

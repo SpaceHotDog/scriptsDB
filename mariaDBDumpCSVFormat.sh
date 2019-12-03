@@ -8,7 +8,6 @@
 
 ### TODO ###
 # OFFSET: El offset hace que no se registren los datos de las ultimas 3 tablas (empresa, nrolocalidad, nroprovincia) - !!DONE
-# NAMING: Guardar los csv.gz usando tambien el nombre de la tabla (Variable $TBL) - !!DONE
 
 # Creamos y nos movemos al entorno de trabajo
 export DB="celulares_2019"
