@@ -75,4 +75,4 @@ do
 done
 echo "Finalizó mantenimiento de $BKPDIR archivos log (`date +%H:%M:%S`)" >> $LOGFILE
 
-#mail-s "Resultado BCK Galera" cleyvic.toro@sondeos.com.ar < $LOGFILE
+mail -s "Resultado BCK Galera" tecnologia@sondeos.com.ar < $LOGFILE

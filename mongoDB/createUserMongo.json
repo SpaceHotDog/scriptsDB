@@ -1,0 +1,4 @@
+db.createUser( { user: "cmpAdm",
+                 pwd: "3135",
+                 roles: [ { role: "readWrite", db: "cmpqa_docka" },
+                          "readWrite"] } )

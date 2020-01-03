@@ -1,0 +1,35 @@
+try {
+    db.MensajesBulk.updateMany(
+        { "idUsuario" : { $in : [ "930", "370" ] } },
+        { $set : { "canal" : "LargoSimSmart1", "cola" : "LargoSimSmart1-Optimo" } }
+    );
+} catch (e) {
+  print(e);
+}
+
+---
+
+{
+    "acknowledged" : true,
+    "matchedCount" : 99250.0,
+    "modifiedCount" : 99249.0
+}
+
+---
+
+try {
+    db.MensajesBulk.updateMany(
+        { "idUsuario" : { $in : [ "217", "352", "583", "1012", "1024", "1120" ] } },
+        { $set : { "canal" : "LargoSimuladoIdentidad1", "cola" : "LargoSimuladoIdentidad1-Optimo" } }
+    );
+} catch (e) {
+  print(e);
+}
+
+---
+
+{
+    "acknowledged" : true,
+    "matchedCount" : 257.0,
+    "modifiedCount" : 233.0
+}

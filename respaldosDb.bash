@@ -3,9 +3,9 @@
 ##Variables
 DBUSER=backupUser
 DBPASS=backup.3135
-BKPDIR=/backupstg/lpredmineviclopez
+BKPDIR=/backupstg/galera-audios
 DATE=`date +%Y%m%d`
-LOGFILE=/backupstg/lpredmineviclopez/$DATE.log
+LOGFILE=/backupstg/galera-audios/$DATE.log
 
 
 echo "------------I N I C I O   B A C K U P (`date +%H:%M:%S`)-----------" >> $LOGFILE
@@ -22,7 +22,7 @@ if [ -f /var/lib/scripts/Lista.txt ]; then
 
         done
 
-        echo "Fin del Backup full 192.168.33.123 (`date +%H:%M:%S`)" >> $LOGFILE
+        echo "Fin del Backup Full 192.168.34.126 (`date +%H:%M:%S`)" >> $LOGFILE
 
 else
         echo "La lista de base de datos a respaldar no estaba en el directorio (Lista.txt)" >> $LOGFILE
@@ -59,4 +59,4 @@ do
 done
 echo "Finalizó mantenimiento de $BKPDIR archivos log (`date +%H:%M:%S`)" >> $LOGFILE
 
-mail-s "Resultado BKP" tecnologia@sondeos.com.ar < $LOGFILE
+mail -s "Resultado BKP" tecnologia@sondeos.com.ar < $LOGFILE
