@@ -1,6 +1,6 @@
 #!/bin/bash
 
-##Variables
+## Variables
 DBUSER=backupUser
 DBPASS=backup.3135
 BKPDIR=/backupstg/galera_reportes/mariabackup
@@ -47,16 +47,6 @@ echo "Conectado nodo03 al balanceador 192.168.33.61 (`date +%H:%M:%S`)" >> $LOGF
 sleep 5s
 ssh 192.168.33.62 "cd /etc/haproxy/ && mv haproxy.cfg MODBK.cfg && mv hacopy.cfg haproxy.cfg && service haproxy restart && exit"
 echo "Conectado nodo03 al balanceador 192.168.33.62 (`date +%H:%M:%S`)" >> $LOGFILE
-
-#Respaldo los usuarios y permisos
-
-mysql -u$DBUSER -p$DBPASS -e "call mysql.export_users_perm();"
-echo "Se respaldan los usuarios y permisos" >> $LOGFILE
-
-mv /dbdata/mariadb_tmp/usuarios.txt $BKPDIR/$DATE/usuarios.txt
-mv /dbdata/mariadb_tmp/permisos_db.txt $BKPDIR/$DATE/permisos.txt
-mv /dbdata/mariadb_tmp/permisos_tablas.txt $BKPDIR/$DATE/permisos_tablas.txt
-mv /dbdata/mariadb_tmp/permisos_procedimientos.txt $BKPDIR/$DATE/permisos_procedimientos.txt
 
 
 echo "------------F I N   B A C K U P   G A L E R A (`date +%H:%M:%S`)-----------" >> $LOGFILE
