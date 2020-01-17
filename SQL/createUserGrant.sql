@@ -12,3 +12,12 @@ ON mcqa.*
 TO mc_qar@'192.168.%';
 
 FLUSH PRIVILEGES;
+
+
+CREATE USER backupUser@'192.168.%' IDENTIFIED BY 'backupUser.31';
+
+GRANT LOCK TABLES, SELECT 
+ON *.*
+TO 'backupUser'@'localhost';
+
+FLUSH PRIVILEGES;

@@ -1,0 +1,45 @@
+#!/bin/bash
+
+## Variables
+DBUSER=backupUser
+DBPASS=backup.3135
+BKPDIR=/backupstg/galera_audios/mariabackup
+DATE=`date +%Y%m%d`
+LOGFILE=/backupstg/galera_audios/$DATE.log
+
+## Desconectar el nodo del cluster
+mysql -h192.168.33.126 -u $DBUSER -p$DBPASS -e "set global wsrep_desync=ON;"
+echo "... Desconectado nodo02 del cluster galera para ejecutar respaldo (`date +%H:%M:%S`)" >> $LOGFILE
+
+echo "----------------INICIO BACKUP FULL DB GALERA reportes (`date +%H:%M:%S`)----------------" >> $LOGFILE
+mkdir $BKPDIR/$DATE
+
+mariabackup --backup --galera-info --no-timestamp \
+   --target-dir=$BKPDIR/$DATE \
+   --user=$DBUSER --password=$DBPASS
+
+if [ $! -eq 0 ]; then
+    echo "Fin del Backup full Galera reportes (`date +%H:%M:%S`)" >> $LOGFILE
+else
+    echo "No se pudo realizar el Backup (`date +%H:%M:%S`)" >> $LOGFILE
+
+## Conecto el nodo de nuevo al cluster MySQL
+mysql -h192.168.33.126 -u $DBUSER -p$DBPASS -e "set global wsrep_desync=OFF;"
+echo "Nodo03 Conectado al cluster (`date +%H:%M:%S`)" >> $LOGFILE
+
+
+echo "------------F I N   B A C K U P   G A L E R A (`date +%H:%M:%S`)-----------" >> $LOGFILE
+
+##Mantenemos 2 días
+for i in `find $BKPDIR -maxdepth 1 -type d -mtime +2 -print`
+do
+   rm -Rf $i;
+done
+echo "Finalizó mantenimiento de $BKPDIR directorios bk (`date +%H:%M:%S`)" >> $LOGFILE
+
+for f in `find $BKPDIR -maxdepth 1 -type f -mtime +2 -print`
+do
+
+   rm -f $f;
+done
+echo "Finalizó mantenimiento de $BKPDIR archivos log (`date +%H:%M:%S`)" >> $LOGFILE
