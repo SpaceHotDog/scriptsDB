@@ -1,0 +1,41 @@
+# SOURCES:
+# MONGO SHELL LOGIN: https://docs.mongodb.com/manual/mongo/
+# CREATE DB: https://www.tutorialspoint.com/mongodb/mongodb_create_database.htm
+# CREATE USER: https://docs.mongodb.com/manual/reference/method/db.createUser/
+
+use admin
+db.createUser(
+   {
+     user: "apiDNI",
+     pwd: "api_dni.3135",
+     roles:
+       [
+         { role: "readWrite", db: "api_dni" }
+       ]
+   }
+)
+
+# EJEMPLO DE PROD:
+
+/* 15 */
+{
+    "_id" : "cmp_br.cmp_br",
+    "user" : "cmp_br",
+    "db" : "cmp_br",
+    "credentials" : {
+        "SCRAM-SHA-1" : {
+            "iterationCount" : 10000,
+            "salt" : "q2zPMROdl30QEu9s6cggyg==",
+            "storedKey" : "jUqDxGhgy8qJdSxIHpvlz0efrUA=",
+            "serverKey" : "x78op+b4S+4LDP74+YoslonCEdY="
+        }
+    },
+    "roles" : [
+        {
+            "role" : "readWrite",
+            "db" : "cmp_br"
+        }
+    ]
+}
+
+db.api_dni.insert({"name":"api_dni"})
