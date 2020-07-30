@@ -1,14 +1,13 @@
 try {
    db.MensajesBulk.deleteMany({ "fechaIngreso" : { $lt : ISODate("2019-12-16T00:00:00.000Z")}, "idUsuario" : { $in : [ "634", "802", "406", "433", "640", "568", "1022", "838", "904", "727", "957", "295", "1026", "1183", "301", "79", "706", "142", "832", "1128", "118", "1148", "451", "1078", "688", "1201", "915", "1102", "139", "442", "235", "538", "1145", "1053" ]},
-   "origen" : {$in : [ "1234", "4321", "5678" ]} });
+   "canal" : "Mazinger" });
 } catch (e) {
    print (e);
 }
 
 
 try {
-   db.MensajesBulk.deleteMany( { "fechaIngreso" : {$lt : ISODate("2019-12-16T00:00:00.000Z")},
-                                         "origen" : {$in : [ "1234", "4321", "5678" ]} });
+   db.MensajesBulk.deleteMany( { "fechaIngreso" : {$lt : ISODate("2020-05-04T00:00:00.000Z")}, "canal" : "Mazinger" });
 } catch (e) {
    print (e);
 }

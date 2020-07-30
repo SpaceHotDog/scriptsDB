@@ -13,8 +13,11 @@ WHERE company_id = '99' AND messenger_id = '197' AND last_updated >= NOW() - INT
 
 UPDATE multic.conversation
 SET last_activity = NOW(), status = 'closed'
-WHERE company_id = '134' AND messenger_id = '265';
+WHERE company_id = '122';
 
+UPDATE multic.conversation
+SET last_activity = NOW(), status = 'closed'
+WHERE company_id = '122' and status = 'available';
 
 ---
 
