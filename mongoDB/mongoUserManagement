@@ -26,7 +26,7 @@ db.createUser({ user: "user",
   ]
 })
 
-// CREATE USER:
+// UPDATE USER:
 db.updateUser("user",{
   roles: [
     { role: "readWrite", db: "database" }
@@ -45,3 +45,15 @@ db.getUsers();
 // --
 // More Information: https://docs.mongodb.com/manual/reference/security/#read
 // --
+
+
+db.createUser({ user: "mchistory-mulc",
+  pwd: "McHistoryMULC.3135",
+  roles: [
+    { role: "readWrite", db: "mc-history-multic" }
+  ]
+})
+
+mc-history-renap
+User: mchistory-r
+Pwd: McHistoryR.3135

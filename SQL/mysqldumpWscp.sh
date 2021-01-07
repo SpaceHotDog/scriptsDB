@@ -17,7 +17,7 @@ read USERDB
 echo "USUARIO SSH:"
 read USERSSH
 
-mysqldump -h$SVO -u$USERDB -p --opt --routines --triggers --events --single-transaction --no-tablespaces --ignore-tables= ${DBO} | gzip > ./${DBO}.sql.gz
+mysqldump -h$SVO -u$USERDB -p -B --opt --routines --triggers --events --single-transaction --no-tablespaces --ignore-tables= ${DBO} | gzip > ./${DBO}.sql.gz
 
 | BATCH_JOB_EXECUTION             |
 | BATCH_JOB_EXECUTION_CONTEXT     |
